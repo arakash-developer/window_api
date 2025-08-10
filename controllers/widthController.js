@@ -27,13 +27,21 @@ const widthController = {
     }
   },
 
-  // Get all width records
+  // Get only the latest width record
   getAllWidths: async (req, res) => {
     try {
-      const widths = await Width.find().sort({ createdAt: -1 });
-      res.status(200).json(widths);
+      // Find only the most recent width record
+      const latestWidth = await Width.findOne().sort({ createdAt: -1 });
+
+      // If no record found, return empty response
+      if (!latestWidth) {
+        return res.status(200).json(null);
+      }
+
+      // Return only the single latest record
+      res.status(200).json(latestWidth);
     } catch (error) {
-      console.error("Error fetching widths:", error);
+      console.error("Error fetching width:", error);
       res.status(500).json({ error: "Server error" });
     }
   },

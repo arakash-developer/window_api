@@ -12,7 +12,7 @@ A simple RESTful API with MVC pattern for handling width data.
 
 ## API Endpoints
 
-- `GET /api/width`: Get all width records
+- `GET /api/width`: Get the latest width record
 - `POST /api/width`: Create a new width record
 
 ## Local Development
@@ -50,7 +50,7 @@ A simple RESTful API with MVC pattern for handling width data.
 curl -X POST -H "Content-Type: application/json" -d '{"width": 100}' http://localhost:5000/api/width
 ```
 
-### Get all width records
+### Get the latest width record
 
 ```bash
 curl http://localhost:5000/api/width
